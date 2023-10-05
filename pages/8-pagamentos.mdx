@@ -1,0 +1,43 @@
+---
+layout: two-cols
+title: Pagamentos
+---
+
+### Pagamentos
+
+**Receber** e **ContasPagar** representam informações de pagamentos, incluindo dados sobre pacientes e fornecedores, formas de pagamento e valores.
+
+**FormasPagamento** representa as formas de pagamento utilizadas no sistema.
+
+::right::
+
+```mermaid
+classDiagram
+    FormasPagamento "1" --> "1..n" Receber
+    FormasPagamento "1..1" --> "1..n" ContasPagar
+    class FormasPagamento {
+        Int id
+        String Nome
+        String descricao
+    }
+
+    class Receber {
+        Int idPaciente
+        String Boleto
+        Int Valor
+        Date Vencimento
+        String status
+        Int idFormaPagamento
+        Int
+    }
+
+    class ContasPagar {
+        String Boleto
+        Int codigoFornecedor
+        Int Valor
+        Date Vencimento
+        String Status
+        Int NumeroConta
+        Int idFormaPagamento
+    }
+```

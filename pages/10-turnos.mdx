@@ -1,0 +1,41 @@
+---
+layout: two-cols
+title: Turnos e Adicionais
+---
+
+### Turnos e Adicionais
+
+**Adicionais** armazena informações sobre valores adicionais ao salário do funcionário
+
+**OrganizacaoTurnos** e **Turno** permitem a organização dos turnos de trabalho dos funcionários.
+
+::right::
+
+```mermaid
+classDiagram
+    Funcionario "1" <-- "0..n" Adicionais
+    class Adicionais {
+      Int id
+      Float Multiplicador
+      Float Insalubridade
+      Int Mes
+      Int Ano
+    }
+
+    Funcionario "1" --> "0..n" OrganizacaoTurnos
+    OrganizacaoTurnos "1" --> "1" Turno
+    class OrganizacaoTurnos {
+      Int id
+      Int idFuncionario
+      Int idTurno
+      Date Data
+    }
+
+    class Turno {
+      Int id
+      DateTime Entrada
+      DateTime Saida
+      DateTime InicioPausa
+      DateTime FimPausa
+    }
+```

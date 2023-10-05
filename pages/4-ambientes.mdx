@@ -1,0 +1,33 @@
+---
+layout: two-cols
+title: Ambientes
+---
+
+### Ambientes
+
+**Sala** representa salas onde consultas e procedimentos podem ocorrer, com informações como ID, localização e finalidade.
+
+**Clinica** representa informações sobre clínicas médicas, incluindo nome, CNPJ, endereço e detalhes de contato.
+
+::right::
+
+```mermaid
+classDiagram
+    class Sala {
+        Int id
+        String Localizacao
+        String Finalidade
+    }
+
+    Clinica "1" --> "1..n" Sala
+    class Clinica {
+        Int id
+        Boolean Filial
+        String Nome
+        String NomeFantasia
+        Int CNPJ
+        String Endereco
+        Int TelefoneFixo
+        Int TelefoneCelular
+    }
+```

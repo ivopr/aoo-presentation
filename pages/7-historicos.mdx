@@ -1,0 +1,40 @@
+---
+layout: two-cols
+title: Histórico
+---
+
+### Histórico
+
+**HistoricoConsulta** e **HistoricoProcedimento** relacionam pacientes a consultas e procedimentos, permitindo o rastreamento de histórico médico.
+
+**HistoricoExame** associa pacientes a exames médicos, permitindo o registro de histórico de exames.
+
+::right::
+
+```mermaid
+classDiagram
+    Paciente "1" <-- "1..n" HistoricoConsulta
+    class Paciente {
+        Int NumeroConvenio
+    }
+
+    class HistoricoConsulta {
+        Int id
+        Int idConsulta
+        Int idPaciente
+    }
+
+    HistoricoProcedimento "1" --> "1..n" Paciente
+    class HistoricoProcedimento {
+        Int id
+        Int idProcecimento
+        Int idPaciente
+    }
+
+    HistoricoExame "1" --> "1..n" Paciente
+    class HistoricoExame {
+        Int id
+        Int idExame
+        Int idPaciente
+    }
+```

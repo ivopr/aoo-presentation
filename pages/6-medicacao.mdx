@@ -1,0 +1,75 @@
+---
+layout: two-cols
+title: Medicação
+---
+
+### Medicação
+
+**Medicacao** descreve medicamentos disponíveis, com informações como nome, estoque e funcionalidades.
+
+**EfeitoColateralMedicacao** e **RestricaoMedicacao** associam medicamentos a efeitos colaterais e restrições.
+
+**MovimentoMedicacao** rastreia o movimento de medicamentos, incluindo informações sobre estoque e datas.
+
+**MedicacaoExame** conecta medicamentos a exames médicos, possibilitando a administração adequada de medicamentos antes de um exame.
+
+::right::
+
+```mermaid
+classDiagram
+    Medicacao "1" --> "1..n" MovimentoMedicacao
+    class Medicacao {
+        Int id
+        String Nome
+        String Descricao
+        String FuncionalidadePrimaria
+        String FuncionalidadeSecundaria
+        Int Estoque
+    }
+
+    class MovimentoMedicacao {
+        Int id
+        Int idMedicacao
+        Int IdClinica
+        Int Quantidade
+        Int EstoqueAnterior
+        Int EstoqueAtual
+        DateTime Data
+        Int idFuncionario
+    }
+
+    EfeitoColateralMedicacao "1" --> "1..n" Medicacao
+    EfeitoColateralMedicacao "1" --> "1..n" EfeitoColateral
+    class EfeitoColateralMedicacao {
+        Int id
+        Int idMedicacao
+        Int idEfeitoColateral
+    }
+
+    class EfeitoColateral {
+        Int id
+        String Nome
+        String Descricao
+    }
+
+    RestricaoMedicacao "1" --> "1..n" Medicacao
+    RestricaoMedicacao "1" --> "1..n" Restricao
+    class RestricaoMedicacao {
+        Int id
+        Int idMedicacao
+        Int idRestricao
+    }
+
+    class Restricao {
+        Int id
+        String Nome
+        String Descricao
+    }
+
+    MedicacaoExame "1" --> "1..n" Medicacao
+    class MedicacaoExame {
+        Int id
+        Int idMedicacao
+        Int idExame
+    }
+```

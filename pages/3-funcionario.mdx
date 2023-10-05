@@ -1,0 +1,46 @@
+---
+layout: two-cols
+title: Classe Funcionario
+---
+
+### Classe Funcionário
+
+**Medico**, **Enfermeiro**, e **Farmaceutico** são subclasses de **Funcionario** que representam diferentes tipos de profissionais de saúde, cada um com atributos específicos, como CRM para Médico e Função para Enfermeiro.
+
+**Funcionario** é uma classe que herda de **Pessoa** e representa informações sobre os funcionários, incluindo código, seguro, dias de trabalho, salário base, entre outros.
+
+::right::
+
+```mermaid
+classDiagram
+    class Funcionario {
+        Int Codigo
+        Int Seguro
+        Int DiasTrabalho
+        Int SalarioBase
+        Int idAdicional
+    }
+
+    Medico <|-- Funcionario
+    class Medico {
+        Int id
+        Int CRM
+        String Especializacao
+        String Ocupacao
+    }
+
+    Enfermeiro <|-- Funcionario
+    class Enfermeiro {
+        Int id
+        String Funcao
+        String Posto
+    }
+
+    Farmaceutico <|-- Funcionario
+    class Farmaceutico {
+      Int id
+      String Posto
+      String Locacao
+      String Formacao
+    }
+```

@@ -1,0 +1,58 @@
+---
+layout: two-cols
+title: Serviços
+---
+
+### Serviços
+
+**Procedimento** é uma classe que descreve procedimentos médicos, com atributos como nome, descrição, data e status.
+
+**Consulta** representa informações sobre consultas médicas, incluindo data, médico responsável e clínica onde ocorre.
+
+**Exame** representa informações sobre exames médicos, incluindo nome, tipo, urgência, preparação e outros detalhes.
+
+::right::
+
+```mermaid
+classDiagram
+    class Consulta {
+        Int id
+        DateTime Data
+        Int idMedico
+        Int idClinica
+        Int idSala
+        Int CodigoAMB
+    }
+
+    class Procedimento {
+        Int id
+        String Nome
+        String Descricao
+        DateTime Data
+        Int idSala
+        String Motivo
+        String status
+        Int idFuncionario
+        Int CodigoAMB
+    }
+
+
+    class Exame {
+        Int id
+        String Nome
+        String Tipo
+        String Urgencia
+        String Preparacao
+        String Recipiente
+        String Material
+        String Descricao
+        Int idFuncionario
+        String Prontuario
+        DateTime DataColeta
+        DateTime DataPedido
+        String status
+        DateTime Data
+        Int CodigoAMB
+        Int idClinica
+    }
+```

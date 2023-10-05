@@ -1,0 +1,57 @@
+---
+layout: two-cols
+image: https://maislaudo.com.br/wp-content/uploads/2020/10/sistema-medico.jpg
+title: Classe Pessoa
+---
+
+### Classe Pessoa
+
+**Pessoa** é uma classe base que representa informações gerais de uma pessoa, como ID, nome, número e contato de emergência.
+
+**Paciente** é uma classe que herda de Pessoa e adiciona informações específicas de um paciente, como número de convênio.
+
+**Fisica** e **Juridica** são subclasses de Pessoa que representam pessoas físicas e jurídicas, respectivamente, cada uma com atributos específicos, como CPF para Fisica e CNPJ para Juridica.
+
+**Fornecedor** é uma classe que herda de **Juridica** e representa informações sobre fornecedores, incluindo inscrição estadual e detalhes de contato.
+
+::right::
+
+```mermaid
+classDiagram
+    class Pessoa {
+        Int id
+        String nome
+        Int numero
+        Int contatoEmergencial
+    }
+
+    Pessoa <|-- Fisica
+    class Fisica {
+        Int CPF
+        Int Sexo
+        Date DataNascimento
+        Int RG
+    }
+
+    Pessoa <|-- Juridica
+    class Juridica {
+        Int CNPJ
+        String NomeFantasia
+        String Gerente
+        String Representante
+        String Endereco
+    }
+
+    Paciente <|-- Pessoa
+    class Paciente {
+        Int NumeroConvenio
+    }
+
+    Fornecedor <|-- Juridica
+    class Fornecedor {
+      Int id
+      String InscricaoEstadual
+      String Endereco
+      String Contato
+    }
+```
